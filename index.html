@@ -3,62 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>🦠 Coronavirus Status | Sri Lanka</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
     <script src="/assets/js/app.js" defer></script>
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" href="/assets/images/logo-96x96.png">
-    <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
-    <meta name="theme-color" content="#FFE1C4">
+    <meta name="apple-mobile-web-app-status-bar" content="#212327">
+    <meta name="theme-color" content="#161819">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <span class="material-icons hover-icon">
+    <span class="material-icons hover-icon" id='nav'>
         notes
         </span>
     <div class="wrapper" id="wrapper">
+        <ul class="circles">
+            <li class="material-icons">coronavirus</li>
+            <li class="material-icons">coronavirus</li>
+            <li class="material-icons">coronavirus</li>
+            <li class="material-icons">coronavirus</li>
+            <li class="material-icons">coronavirus</li>
+            <li class="material-icons">coronavirus</li>
+            <li class="material-icons">coronavirus</li>
+            <li class="material-icons">coronavirus</li>
+            <li class="material-icons">coronavirus</li>
+            <li class="material-icons">coronavirus</li>
+    </ul>
     <section class="sriLanka">
         <div class="data-wrapper">
         <h1>Sri Lanka</h1>
+        <span id='data-sl-timer'><span class="material-icons data-icon-timer">restore</span>last updated an minute ago</span>
         <div class="data-container">
             <div class="active_cases_sl">
-                <span class="material-icons data-icon">
+                <span class="material-icons data-icon-active">
                     night_shelter
                     </span>
                     
                <div class="data-point">
-                   <span class="data-count">1021</span>
+                   <span class="data-count" id='data-sl-active'>00</span>
                    <span class="data-label">Active Cases</span>
                </div>
             </div>
             <div class="recovered_cases_sl">
                 <div class="data-point">
-                    <span class="data-count">1021</span>
+                    <span class="data-count" id='data-sl-recover'>00</span>
                     <span class="data-label">Recovered</span>
+                    <span class="data-rate" id='data-sl-recover-rate'><span class="material-icons data-rate">info</span></span>                      </span>
                 </div>
             </div>
             <div class="deaths_sl">
                 <div class="data-point">
-                    <span class="data-count">1021</span>
+                    <span class="data-count" id='data-sl-deaths'>00</span>
                     <span class="data-label">Deaths</span>
+                    <span class="data-rate" id='data-sl-death-rate'><span class="material-icons data-rate">info</span></span>
                 </div>
             </div>
             <div class="total_cases_sl">
-                <span class="material-icons data-icon">
+                <span class="material-icons data-icon-confirm">
                     coronavirus
                     </span>
                     
                <div class="data-point">
-                   <span class="data-count">1021</span>
+                   <span class="data-count" id='data-sl-confirm'>0</span>
                    <span class="data-label">Confirmed Cases</span>
                </div>
             </div>
         </div>
+        <canvas id="totalCasesChart" height="300"></canvas>
+        <canvas id="overallDonut" height="300"></canvas>
+        <div class="table-section" id="table-section">
+            <span class="material-icons new-tab" id="new-tab">
+                open_in_new
+                </span>
+            <div class="table-wrapper">
+                <div class="table-header">
+                    <span class="hospital-header">Hospital</span>
+                    <span class="patients-header">Patients</span>
+                    <div class="cat-header">
+                        <span class="loc-header">Loc.</span>
+                        <span class="for-header">For.</span>
+                        <span class="tot-header">Total</span>
+                    </div>
+                </div>
+                <div class="table-data-wrapper">
+                    <div class="table-data" id="tableData">
+            </div>
+                 </div>
+            </div>
+        </div>
     </div>
+
     </section>
     <section class="world">
-        <h1>World</h1>
+        <div class="data-wrapper">
+            <h1>World</h1>
+            <span id='data-world-timer'><span class="material-icons data-icon-timer">restore</span>last updated an minute ago</span>
+            <div class="data-container">
+                <div class="active_cases_sl">
+                    <span class="material-icons data-icon-active">
+                        night_shelter
+                        </span>
+                        
+                   <div class="data-point">
+                       <span class="data-count wor-lab" id='data-world-active'>00</span>
+                       <span class="data-label">Active Cases</span>
+                   </div>
+                </div>
+                <div class="recovered_cases_sl">
+                    <div class="data-point">
+                        <span class="data-count wor-lab sm" id='data-world-recover'>00</span>
+                        <span class="data-label">Recovered</span>
+                        <span class="data-rate" id='data-world-recover-rate'></span>
+                    </div>
+                </div>
+                <div class="deaths_sl">
+                    <div class="data-point">
+                        <span class="data-count wor-lab sm" id='data-world-deaths'>00</span>
+                        <span class="data-label">Deaths</span>
+                        <span class="data-rate" id='data-world-death-rate'></span>
+                    </div>
+                </div>
+                <div class="total_cases_sl">
+                    <span class="material-icons data-icon-confirm">
+                        coronavirus
+                        </span>
+                        
+                   <div class="data-point">
+                       <span class="data-count wor-lab" id='data-world-confirm'>0</span>
+                       <span class="data-label">Confirmed Cases</span>
+                   </div>
+                </div>
+            </div>
+        </div>
     </section>
 </div>
     <nav>

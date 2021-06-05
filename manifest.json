@@ -3,8 +3,8 @@
     "short_name": "NameWebsite",
     "start_url": "/index.html",
     "display": "standalone",
-    "background_color": "#F4F4F4",
-    "theme_color": "#F4F4F4", 
+    "background_color": "#212327",
+    "theme_color": "#161819", 
     "orientation": "portrait-primary",
     "icons": [
       {
