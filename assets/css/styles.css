@@ -23,6 +23,7 @@ font-family: 'Varela Round', sans-serif; */
     --font-varela: 'Varela Round', sans-serif;
     --font-pop: 'Poppins', sans-serif;
     --bg-gradient: linear-gradient(167deg, rgba(243,244,249,1) 0%, rgba(239,240,245,1) 100%);
+    --stage-color: #fff;
 }
 
 [data-theme="dark"]{
@@ -39,6 +40,7 @@ font-family: 'Varela Round', sans-serif; */
     --font-varela: 'Varela Round', sans-serif;
     --font-pop: 'Poppins', sans-serif;
     --bg-gradient: linear-gradient(167deg, #090c1f 0%, #070a1b 100%);
+    --stage-color: #040614;
 }
 
 *{
@@ -89,8 +91,21 @@ html,body{
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    background: var(--secondary-color);
+}
+
+body{
+    background: var(--secondary-color); 
     background: var(--bg-gradient)
+}
+
+html{
+    background-color: var(--stage-color) !important;
+}
+
+body{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .hover-icon{
@@ -147,8 +162,8 @@ nav{
 }
 
 .navigation .button_selected{
-    width: 11vw;
-    height: 11vw;
+    width: fit-content;
+    aspect-ratio: 1/1;
     border-radius: .5em;
     padding: 5px;
     background-color: var(--button-color-1);
@@ -418,6 +433,7 @@ nav{
 }
 
 .table-section{
+    display: none !important;
     margin-top: 2em;
     padding: 1.5em;
     border-radius: .5rem;
@@ -582,4 +598,14 @@ nav{
     right: 2.5vh;
     top: 3vh;
     font-size: 1.75em !important;
+}
+
+@media screen and (max-width: 1366px) {
+    body{
+        max-width: 500px;
+    }
+    /* .button_selected{
+        width: fit-content;
+        aspect-ratio: 1/1;
+    } */
 }
