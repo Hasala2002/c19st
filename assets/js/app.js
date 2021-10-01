@@ -141,7 +141,7 @@ function swipedetect(el, callback) {
   fetch('https://hpb.health.gov.lk/api/get-current-statistical')
   .then(response => response.json())
   .then(data => {
-    console.log(data.data)
+
     setCovidStatus(data.data)
     setTableData(data.data.hospital_data)
   });
@@ -231,7 +231,7 @@ function swipedetect(el, callback) {
   fetch('https://api.covid19api.com/country/sri-lanka/status/confirmed')
   .then(response => response.json())
   .then(data => {
-    console.log(data)
+
     var totalCasesChart = new Chart(tCC, {
       type: 'line',
       data: {
