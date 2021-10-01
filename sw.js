@@ -3,9 +3,11 @@ const assets = [
   '/',
   '/index.html',
   '/assets/js/app.js',
-  '/assets/css/styles.css'
-//   '/assets/images/background-home.jpg',
-//   'https://fonts.googleapis.com/css?family=Lato:300,400,700',
+  '/assets/css/styles.css',
+  '/assets/images/logo76.png',
+  '/assets/images/logo96.png',
+  '/assets/images/logo128.png',
+  'https://fonts.googleapis.com/css?family=Lato:300,400,700',
 ];
 // install event
 self.addEventListener('install', evt => {

@@ -1,9 +1,13 @@
-// credit: http://www.javascriptkit.com/javatutors/touchevents2.shtml
-// if('serviceWorker' in navigator){
-//     navigator.serviceWorker.register('/sw.js')
-//       .then(reg => console.log('service worker registered'))
-//       .catch(err => console.log('service worker not registered', err));
-//   }
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
+
 
 const navigationBtn = document.getElementById('nav')
 
